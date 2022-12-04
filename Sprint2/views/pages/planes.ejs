@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+    <%- include('../partials/header'); %>
+</header>
+
+<main>
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="jumbotron">
+                <p><%= locals.tagline %></p>
+                <ul>
+                    <% if (locals.planes) { %>
+    
+                        <% locals.planes.forEach(function(planes) { %>
+                            <li>
+                                <strong><%= planes.model %></strong>, make: 
+                                <%= planes.make %>, year: <%= planes.ayear %>, capacity: <%= planes.capacity %>, plane ID: <%= planes.id %></p>
+                            </li>
+                        <% }); %>
+    
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+    
+        <div class="col-sm-4">
+            <div class="well">
+                <div>
+                    <form action="/add_plane" method="post">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="form-label">Add a Plane</label>
+                            <input type="text" id="planeidinput" name="planeidinput" class="form-control" placeholder="Plane ID" required
+                            autofocus>
+                            <input type="text" id="yearinput" name="yearinput" class="form-control" placeholder="Year: YYYY" required
+                            autofocus>
+                            <input type="text" id="capacityinput" name="capacityinput" class="form-control" placeholder="Capacity" required
+                            autofocus>
+                            <input type="text" id="makeinput" name="makeinput" class="form-control" placeholder="Make" required
+                            autofocus>
+                            <input type="text" id="modelinput" name="modelinput" class="form-control" placeholder="Model" required
+                            autofocus>
+                        </div>
+                        
+                        <input class="btn btn-lg btn-primary btn-block" type="submit">
+                    </form>
+                </div>
+            </div>
+        </div>    
+    
+        <div class="col-sm-4">
+            <div class="well">
+                <div>
+                    <form action="/delete_plane" method="delete">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="form-label">Delete a Plane</label>
+                            <input type="text" id="planeiddelete" name="planeiddelete" class="form-control" placeholder="Plane ID to Delete" required
+                            autofocus>
+                        </div>
+                        
+                        <input class="btn btn-lg btn-primary btn-block" type="submit">
+                    </form>
+                </div>
+            </div>
+        </div>
+    
+        <div class="col-sm-4">
+            <div class="well">
+                <div>
+                    <form action="/update_plane" method="put">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="form-label">Update a Plane</label>
+                            <input type="text" id="planeidupdate" name="planeidupdate" class="form-control" placeholder="Plane ID to Update" required
+                            autofocus>
+                            <input type="text" id="planeyearupdate" name="planeyearupdate" class="form-control" placeholder="Plane Year" required
+                            autofocus>
+                            <input type="text" id="planecapacityupdate" name="planecapacityupdate" class="form-control" placeholder="Plane Capacity" required
+                            autofocus>
+                            <input type="text" id="planemakeupdate" name="planemakeupdate" class="form-control" placeholder="Plane Make" required
+                            autofocus>
+                            <input type="text" id="planemodelupdate" name="planemodelupdate" class="form-control" placeholder="Plane Model" required
+                            autofocus>
+                        </div>
+                        
+                        <input class="btn btn-lg btn-primary btn-block" type="submit">
+                    </form>
+                </div>
+            </div>
+        </div>
+    
+        
+    </div>
+    </main>
+
+<footer>
+    <%- include('../partials/footer'); %>
+</footer>
+
+</body>
+</html>

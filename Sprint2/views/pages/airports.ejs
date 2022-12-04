@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+    <%- include('../partials/header'); %>
+</header>
+
+<main>
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="jumbotron">
+                <p><%= locals.tagline %></p>
+                <ul>
+                    <% if (locals.airports) { %>
+    
+                        <% locals.airports.forEach(function(airports) { %>
+                            <li>
+                                <strong><%= airports.airportname %></strong>, Airport Code: <%= airports.airportcode %>, Airport Country: <%= airports.country %>, Airport ID: <%= airports.id %>
+                            </li>
+                        <% }); %>
+    
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+    
+        <div class="col-sm-4">
+            <div class="well">
+                <div>
+                    <form action="add_airport" method="post">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="form-label">Add an Airport</label>
+                            <input type="text" id="airportidinput" name="airportidinput" class="form-control" placeholder="Airport ID" required
+                            autofocus>
+                            <input type="text" id="airportcodeinput" name="airportcodeinput" class="form-control" placeholder="Airport Code" required
+                            autofocus>
+                            <input type="text" id="airportnameinput" name="airportnameinput" class="form-control" placeholder="Airport Name" required
+                            autofocus>
+                            <input type="text" id="airportcountryinput" name="airportcountryinput" class="form-control" placeholder="Airport Country" required
+                            autofocus>
+                        </div>
+                        
+                        <input class="btn btn-lg btn-primary btn-block" type="submit">
+                    </form>
+                </div>
+            </div>
+        </div>    
+        
+        <div class="col-sm-4">
+            <div class="well">
+                <div>
+                    <form action="/delete_airport" method="delete">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="form-label">Delete an Airport</label>
+                            <input type="text" id="airportiddelete" name="airportiddelete" class="form-control" placeholder="Airport ID to Delete" required
+                            autofocus>
+                        </div>
+                        
+                        <input class="btn btn-lg btn-primary btn-block" type="submit">
+                    </form>
+                </div>
+            </div>
+        </div>
+    
+        <div class="col-sm-4">
+            <div class="well">
+                <div>
+                    <form action="/update_airport" method="put">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="form-label">Update an Airport</label>
+                            <input type="text" id="airportidupdate" name="airportidupdate" class="form-control" placeholder="Airport ID to Update" required
+                            autofocus>
+                            <input type="text" id="airportcodeupdate" name="airportcodeupdate" class="form-control" placeholder="Airport Code" required
+                            autofocus>
+                            <input type="text" id="airportnameupdate" name="airportnameupdate" class="form-control" placeholder="Airport Name" required
+                            autofocus>
+                            <input type="text" id="airportcountryupdate" name="airportcountryupdate" class="form-control" placeholder="Airport Country" required
+                            autofocus>
+                        </div>
+                        
+                        <input class="btn btn-lg btn-primary btn-block" type="submit">
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    </main>
+
+   
+<footer>
+    <%- include('../partials/footer'); %>
+</footer>
+
+</body>
+</html>
